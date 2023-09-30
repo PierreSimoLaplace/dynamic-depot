@@ -2,7 +2,7 @@
 #define _FFTCPU_H
 #include<cstring>
 #include<typeinfo>
-#include"tool_new.h"
+#include"newtool.h"
 
 /* Arrange binary number into reverse order */
 int reverseBin(int t,int p);
