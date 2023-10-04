@@ -1,4 +1,5 @@
 #include<iostream>
+#include<iomanip>
 #include"fftcpu.h"
 using namespace std;
 int main(){
@@ -14,27 +15,27 @@ int main(){
 		M1[i]=i+1;
 	cout<<"FFT1d input array:"<<endl;
 	for(i=0;i<n1;i++){
-		cout<<"M1["<<i<<"]="<<M1[i]<<" ";
+		cout<<fixed<<setprecision(2)<<setiosflags(ios::right)<<setw(6)<<M1[i];
 		if(i>0 && i%lf==0)
 			cout<<endl;
 	}
 	cout<<endl;
 	fft1d(M1,M2,n1);
-	cout<<"fft1d result:"<<endl;
+	cout<<"FFT1d result:"<<endl;
 	for(i=0;i<n1;i++){
-		cout<<"("<<M2[i].real()<<","<<M2[i].imag()<<") ";
+		cout<<"("<<fixed<<setprecision(2)<<setiosflags(ios::right)<<setw(6)<<M2[i].real()<<","<<fixed<<setprecision(2)<<setiosflags(ios::right)<<setw(6)<<M2[i].imag()<<") ";
 		if(i>0 && i%lf==0)
 			cout<<endl;
 	}
 	cout<<endl;
-	cout<<"ifft1d result:"<<endl;
+	cout<<"IFFT1d result:"<<endl;
 	ifft1d(M2,M3,n1);
 	for(i=0;i<n1;i++){
-		cout<<"("<<M3[i]<<") ";
+		cout<<fixed<<setprecision(2)<<setiosflags(ios::right)<<setw(6)<<M3[i];
 		if(i>0 && i%lf==0)
 			cout<<endl;
 	}
-	cout<<endl;
+	cout<<endl<<endl;
 	
 	/* 2d FFT and IFFT */
 	float **A1=alloc_2d(A1,n1,n2);
@@ -46,24 +47,23 @@ int main(){
 	cout<<"FFT2d input array:"<<endl;
 	for(i=0;i<n1;i++){
 		for(j=0;j<n2;j++){
-			cout<<"A1["<<i<<"]["<<j<<"]="<<A1[i][j]<<" ";
+			cout<<fixed<<setprecision(2)<<setiosflags(ios::right)<<setw(6)<<A1[i][j];
 		}
 		cout<<endl;
 	}
-	cout<<endl;
 	fft2d(A1,A3,n1,n2);
-	cout<<"fft2d result:"<<endl;
+	cout<<"FFT2d result:"<<endl;
 	for(i=0;i<n1;i++){
 		for(j=0;j<n2;j++){
-			cout<<"("<<A3[i][j].real()<<","<<A3[i][j].imag()<<") ";
+			cout<<"("<<fixed<<setprecision(2)<<setiosflags(ios::right)<<setw(6)<<A3[i][j].real()<<","<<fixed<<setprecision(2)<<setiosflags(ios::right)<<setw(6)<<A3[i][j].imag()<<") ";
 		}
 		cout<<endl;
 	}
 	ifft2d(A3,A2,n1,n2);
-	cout<<"ifft2d result:"<<endl;
+	cout<<"FFT2d result:"<<endl;
 	for(i=0;i<n1;i++){
 		for(j=0;j<n2;j++){
-			cout<<"A2["<<i<<"]["<<j<<"]="<<A2[i][j]<<" ";
+			cout<<fixed<<setprecision(2)<<setiosflags(ios::right)<<setw(6)<<A2[i][j];
 		}
 		cout<<endl;
 	}
