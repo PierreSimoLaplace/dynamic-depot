@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#BSUB -J example
+#BSUB -q pool3
+#BSUB -n 1
+#BSUB -R span[ptile=72]
+#BSUB -o out.%J.txt
+#BSUB -e error.%J.txt
+#BSUB -m "g01n01"
+##### #BSUB -x
+
+./demo.out -device=2
+
+
+#####  脚本说明
+#####  #BSUB -J example 指定作业名称为example
+#####  #BSUB -q normal  指定提交队列为normal
+#####			计算节点有3个队列，c03、c04开头为normal队列，
+#####			c05开头为pool2队列，g01n01为pool3队列。
+#####  #BSUB -n 72	指定作业总计最大CPU核数为72;g01n01上的GPU程序该项不可以大于4
+#####  #BSUB -R span[ptile=36]
+#####			指定作业在单个节点上最大CPU核数为36
+#####  #BSUB -o out.%J.txt
+#####			指定作业的标准输出为“out.作业号.txt”
+#####  #BSUB -e error.%J.txt
+#####			指定作业的错误输出为“error.作业号.txt”
+#####  #BSUB -m "c03n03 c03n11"
+#####			指定作业占用节点为c03n03和c03n11，删除此项则随机分配空节点
+#####  #BSUB -x		指定作业独占节点，其他用户无法往该节点上发作业，发往c05n0?和g01n01请删除此项
+#####  提交脚本命令为 bsub < qsub.lsf
