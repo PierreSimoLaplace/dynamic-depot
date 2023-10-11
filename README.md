@@ -3,4 +3,4 @@
 Header file are placed in document `include` and you can learn about how to use API for
 executing fftcpu and opening array with dynamic memory conveniently and rapidly.  
 Compile format:  
-`g++ demo.cpp -I./include -L./lib64 -lfftcpu -lnewtool -o demo.cpp`
+`g++ demo.cpp -I./include -L./lib64 -lfftcpu -lnewtool -o demo.out`
