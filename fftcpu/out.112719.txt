@@ -1,0 +1,130 @@
+Sender: LSF System <lsfadmin@c05n03>
+Subject: Job 112719: <example> in cluster <cluster1> Done
+
+Job <example> was submitted from host <lmgt01> by user <JZE> in cluster <cluster1>.
+Job was executed on host(s) <72*c05n03>, in queue <pool2>, as user <JZE> in cluster <cluster1>.
+</share/home/JZE> was used as the home directory.
+</share/home/JZE/fftcpu> was used as the working directory.
+Started at Results reported on 
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+
+#BSUB -J example
+#BSUB -q pool2
+#BSUB -n 72
+#BSUB -R span[ptile=72]
+#BSUB -o out.%J.txt
+#BSUB -e error.%J.txt
+#BSUB -m "c05n03"
+##### #BSUB -x
+
+./demo.out
+
+
+#####  脚本说明
+#####  #BSUB -J example 指定作业名称为example
+#####  #BSUB -q normal  指定提交队列为normal
+#####			计算节点有3个队列，c03、c04开头为normal队列，
+#####			c05开头为pool2队列，g01n01为pool3队列。
+#####  #BSUB -n 72	指定作业总计最大CPU核数为72;g01n01上的GPU程序该项不可以大于4
+#####  #BSUB -R span[ptile=36]
+#####			指定作业在单个节点上最大CPU核数为36
+#####  #BSUB -o out.%J.txt
+#####			指定作业的标准输出为“out.作业号.txt”
+#####  #BSUB -e error.%J.txt
+#####			指定作业的错误输出为“error.作业号.txt”
+#####  #BSUB -m "c03n03 c03n11"
+#####			指定作业占用节点为c03n03和c03n11，删除此项则随机分配空节点
+#####  #BSUB -x		指定作业独占节点，其他用户无法往该节点上发作业，发往c05n0?和g01n01请删除此项
+#####  提交脚本命令为 bsub < qsub.lsf
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   0.05 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   1 sec.
+    Turnaround time :                            223 sec.
+
+The output (if any) follows:
+
+FFT1d input array:
+   -4.55   -0.43    4.42    4.67
+By fftcpu
+Time consumption:0.06 ms
+FFT1d result:
+(    4.11,    0.00) (   -8.97,    5.10) (   -4.37,    0.00) (   -8.97,   -5.10) 
+Time consumption:0.01 ms
+IFFT1d result:
+   -4.55   -0.43    4.42    4.67
+
+By fftw3f
+FFT1d input array:
+   -4.55   -0.43    4.42    4.67
+Time consumption:0.00 ms
+FFT1d result:
+(    4.11,    0.00) (   -8.97,    5.10) (   -4.37,    0.00) (   -8.97,   -5.10) 
+Time consumption:0.01 ms
+IFFT1d result:
+   -4.55   -0.43    4.42    4.67
+
+By fftcpu
+FFT2d input array:
+    0.71   -2.46
+    0.84    1.68
+   -1.59   -2.87
+   -4.59   -3.81
+
+Time consumption:0.03 ms
+FFT2d result:
+(  -12.09,    0.00) (    2.84,    0.00) 
+(    2.71,  -10.92) (    1.88,    0.05) 
+(   -0.32,    0.00) (    6.07,    0.00) 
+(    2.71,   10.92) (    1.88,   -0.05) 
+
+Time consumption:0.01 ms
+IFFT2d result:
+    0.71   -2.46
+    0.84    1.68
+   -1.59   -2.87
+   -4.59   -3.81
+
+By fftw3f
+FFT2d input array:
+    0.71   -2.46
+    0.84    1.68
+   -1.59   -2.87
+   -4.59   -3.81
+
+Time consumption:0.00 ms
+FFT2d result:
+(  -12.09,    0.00) (    2.84,    0.00) 
+(    2.71,  -10.92) (    1.88,    0.05) 
+(   -0.32,    0.00) (    6.07,    0.00) 
+(    2.71,   10.92) (    1.88,   -0.05) 
+
+Time consumption:0.00 ms
+IFFT2d result:
+    0.71   -2.46
+    0.84    1.68
+   -1.59   -2.87
+   -4.59   -3.81
+
+
+
+PS:
+
+Read file <error.112719.txt> for stderr output of this job.
+
