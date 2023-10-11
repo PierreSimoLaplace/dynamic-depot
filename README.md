@@ -6,4 +6,4 @@ i create a `complexcuda` class suitable for kernel function and overload basic o
 arithmetic operator,basic assigning operator and basic type-cast operator.All details are listed in 
 `complexcuda.cu` and `complexcuda.h`.  
 Compile format:  
-`g++ demo.cpp -I./include -L./lib64 -lfftcpu -lnewtool -o demo.cpp`
+`nvcc demo.cu -I./include -I./ -L./lib64 -lcudart -lfftgpu -o demo.out`
